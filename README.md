@@ -17,7 +17,7 @@ To use this code, the only things that you need to do are;
 - First, you clone  all the code in a folder on your PC
   ```bash
   git clone https://github.com/Henriazz10/BondolAI-Server.git
-  cd BondolAI-Local-and-Server
+  cd BondolAI-Server
   ```
 - Then, you need to install all libraries of requeriments.txt
   ```bash
