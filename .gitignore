@@ -34,10 +34,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# # Local Streamlit Configuration
-# Ignore the local Streamlit configuration folder if it exists.
-.streamlit/
-
 # # Log Files
 # If you generate logs, they shouldn't be in the repository.
 *.log

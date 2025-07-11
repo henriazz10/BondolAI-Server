@@ -1,0 +1,6 @@
+[theme]
+primaryColor="#282A2C"          # Color principal para elementos interactivos
+backgroundColor="#1B1C1D"        # Color de fondo principal
+secondaryBackgroundColor="#282A2C" # Color de fondo para la barra lateral y otros elementos
+textColor="#FFFFFF"              # Color del texto
+font="monospace"                # Fuentes disponibles: "sans serif", "serif", "monospace"
