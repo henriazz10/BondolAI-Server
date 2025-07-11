@@ -20,7 +20,7 @@ import streamlit as st
 import time
 
 # We import the Google's GenAI library
-from google import genai
+import google.generativeai as genai
 from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
 from google.genai import types
 import google.genai.errors
