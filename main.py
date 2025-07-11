@@ -19,7 +19,6 @@
 import streamlit as st
 import sqlite3 as sql
 from streamlit_cookies_controller import CookieController
-# Since functions.py, we import all critical functions for the app to work
 from functions import login_dialog, register_dialog, A2F_dialog, create_account, change_password_dialog, change_password_2nd_dialog
 
 

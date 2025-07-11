@@ -29,8 +29,7 @@ import random
 from email.mime.text import MIMEText
 from streamlit_cookies_controller import CookieController
 
-# We import functions that allow to use Google's LLMs, Mistral LLMs and Open Code LLMs
-from ollama import Client
+# We import functions that allow to use Google's LLMs and Mistral LLMs
 from Gemini.GeminiAPI import gemini_answer
 from Mistral.MistralLlmAPI import mistral_answer
 
