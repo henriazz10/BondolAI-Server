@@ -50,7 +50,6 @@ google_models = ['gemini-2.5-pro',
 # In this one, are all the server models that can run on Mistral's Server
 mistral_models = ['mistral-small-2506', 'magistral-small-2506', 'magistral-small-2506', 'open-mistral-nemo']
 
-client = Client() # We set Ollama client, it would allow to use Ollama's models
 
 # This function saves the conversation history in the database
 def save_history(conversation_id, name, historial, model, user_name):
