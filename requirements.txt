@@ -1,1 +1,93 @@
- a n y i o = = 4 . 8 . 0   a t t r s = = 2 5 . 3 . 0   a u d i o o p - l t s = = 0 . 2 . 1   b l i n k e r = = 1 . 9 . 0   c a c h e t o o l s = = 5 . 5 . 2   c e r t i f i = = 2 0 2 5 . 1 . 3 1   c h a r s e t - n o r m a l i z e r = = 3 . 4 . 1   c l i c k = = 8 . 1 . 8   c o l o r a m a = = 0 . 4 . 6   e v a l _ t y p e _ b a c k p o r t = = 0 . 2 . 2   f i l e l o c k = = 3 . 1 8 . 0   f s s p e c = = 2 0 2 5 . 3 . 2   g e n e r a t i v e a i = = 0 . 0 . 1   g i t d b = = 4 . 0 . 1 2   G i t P y t h o n = = 3 . 1 . 4 4   g o o g l e - a i - g e n e r a t i v e l a n g u a g e = = 0 . 6 . 1 5   g o o g l e - a p i - c o r e = = 2 . 2 4 . 2   g o o g l e - a p i - p y t h o n - c l i e n t = = 2 . 1 6 6 . 0   g o o g l e - a u t h = = 2 . 3 8 . 0   g o o g l e - a u t h - h t t p l i b 2 = = 0 . 2 . 0   g o o g l e - g e n a i = = 1 . 2 4 . 0   g o o g l e - g e n e r a t i v e a i = = 0 . 8 . 4   g o o g l e a p i s - c o m m o n - p r o t o s = = 1 . 6 9 . 2   g r p c i o = = 1 . 7 1 . 0   g r p c i o - s t a t u s = = 1 . 7 1 . 0   h 1 1 = = 0 . 1 4 . 0   h t t p c o r e = = 1 . 0 . 7   h t t p l i b 2 = = 0 . 2 2 . 0   h t t p x = = 0 . 2 8 . 1   h u g g i n g f a c e - h u b = = 0 . 3 0 . 2   i d n a = = 3 . 1 0   J i n j a 2 = = 3 . 1 . 6   j s o n p a t c h = = 1 . 3 3   j s o n p o i n t e r = = 3 . 0 . 0   j s o n s c h e m a = = 4 . 2 3 . 0   j s o n s c h e m a - s p e c i f i c a t i o n s = = 2 0 2 4 . 1 0 . 1   l a n g c h a i n - c o r e = = 0 . 3 . 4 5   l a n g c h a i n - o l l a m a = = 0 . 2 . 3   l a n g s m i t h = = 0 . 3 . 1 5   M a r k u p S a f e = = 3 . 0 . 2   m i s t r a l a i = = 1 . 7 . 1   n a r w h a l s = = 1 . 3 0 . 0   n u m p y = = 2 . 2 . 3   o l l a m a = = 0 . 4 . 7   o r j s o n = = 3 . 1 0 . 1 5   p a c k a g i n g = = 2 4 . 2   p a n d a s = = 2 . 2 . 3   p i l l o w = = 1 1 . 1 . 0   p i p - r e v i e w = = 1 . 3 . 0   p r o t o - p l u s = = 1 . 2 6 . 1   p r o t o b u f = = 5 . 2 9 . 3   p y a r r o w = = 1 9 . 0 . 1   p y a s n 1 = = 0 . 6 . 1   p y a s n 1 _ m o d u l e s = = 0 . 4 . 2   p y d a n t i c = = 2 . 1 0 . 6   p y d a n t i c _ c o r e = = 2 . 2 7 . 2   p y d e c k = = 0 . 9 . 1   p y p a r s i n g = = 3 . 2 . 3   p y t h o n - d a t e u t i l = = 2 . 9 . 0 . p o s t 0   p y t z = = 2 0 2 5 . 2   P y Y A M L = = 6 . 0 . 2   r e f e r e n c i n g = = 0 . 3 6 . 2   r e q u e s t s = = 2 . 3 2 . 3   r e q u e s t s - t o o l b e l t = = 1 . 0 . 0   r p d s - p y = = 0 . 2 3 . 1   r s a = = 4 . 9   s i x = = 1 . 1 7 . 0   s m m a p = = 5 . 0 . 2   s n i f f i o = = 1 . 3 . 1   S p e e c h R e c o g n i t i o n = = 3 . 1 4 . 2   s t a n d a r d - a i f c = = 3 . 1 3 . 0   s t a n d a r d - c h u n k = = 3 . 1 3 . 0   s t r e a m l i t = = 1 . 4 3 . 2   s t r e a m l i t - c o o k i e s - c o n t r o l l e r = = 0 . 0 . 4   t e n a c i t y = = 8 . 5 . 0   t i m e s t a m p = = 0 . 0 . 1   t o m l = = 0 . 1 0 . 2   t o r n a d o = = 6 . 5 . 1   t q d m = = 4 . 6 7 . 1   t y p i n g - i n s p e c t i o n = = 0 . 4 . 1   t y p i n g _ e x t e n s i o n s = = 4 . 1 4 . 1   t z d a t a = = 2 0 2 5 . 2   u r i t e m p l a t e = = 4 . 2 . 0   u r l l i b 3 = = 2 . 5 . 0   w a t c h d o g = = 6 . 0 . 0   w e b s o c k e t s = = 1 5 . 0 . 1   z s t a n d a r d = = 0 . 2 3 . 0   
+altair==5.5.0
+annotated-types==0.7.0
+anyio==4.8.0
+attrs==25.3.0
+audioop-lts==0.2.1
+blinker==1.9.0
+cachetools==5.5.2
+certifi==2025.1.31
+charset-normalizer==3.4.1
+click==8.1.8
+colorama==0.4.6
+comtypes==1.4.10
+eval_type_backport==0.2.2
+filelock==3.18.0
+fsspec==2025.3.2
+generativeai==0.0.1
+gitdb==4.0.12
+GitPython==3.1.44
+google-ai-generativelanguage==0.6.15
+google-api-core==2.24.2
+google-api-python-client==2.166.0
+google-auth==2.38.0
+google-auth-httplib2==0.2.0
+google-genai==1.24.0
+google-generativeai==0.8.4
+googleapis-common-protos==1.69.2
+grpcio==1.71.0
+grpcio-status==1.71.0
+h11==0.14.0
+httpcore==1.0.7
+httplib2==0.22.0
+httpx==0.28.1
+huggingface-hub==0.30.2
+idna==3.10
+Jinja2==3.1.6
+jsonpatch==1.33
+jsonpointer==3.0.0
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
+langchain-core==0.3.45
+langchain-ollama==0.2.3
+langsmith==0.3.15
+MarkupSafe==3.0.2
+mistralai==1.7.1
+narwhals==1.30.0
+numpy==2.2.3
+ollama==0.4.7
+orjson==3.10.15
+packaging==24.2
+pandas==2.2.3
+pillow==11.1.0
+pip-review==1.3.0
+proto-plus==1.26.1
+protobuf==5.29.3
+pyarrow==19.0.1
+pyasn1==0.6.1
+pyasn1_modules==0.4.2
+pydantic==2.10.6
+pydantic_core==2.27.2
+pydeck==0.9.1
+pyparsing==3.2.3
+pypiwin32==223
+python-dateutil==2.9.0.post0
+pyttsx3==2.98
+pytz==2025.2
+pywin32==310
+PyYAML==6.0.2
+referencing==0.36.2
+requests==2.32.3
+requests-toolbelt==1.0.0
+rpds-py==0.23.1
+rsa==4.9
+six==1.17.0
+smmap==5.0.2
+sniffio==1.3.1
+SpeechRecognition==3.14.2
+standard-aifc==3.13.0
+standard-chunk==3.13.0
+streamlit==1.43.2
+streamlit-cookies-controller==0.0.4
+tenacity==8.5.0
+timestamp==0.0.1
+toml==0.10.2
+tornado==6.5.1
+tqdm==4.67.1
+typing-inspection==0.4.1
+typing_extensions==4.14.1
+tzdata==2025.2
+uritemplate==4.2.0
+urllib3==2.5.0
+watchdog==6.0.0
+websockets==15.0.1
+zstandard==0.23.0
