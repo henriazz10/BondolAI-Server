@@ -9,7 +9,6 @@ certifi==2025.1.31
 charset-normalizer==3.4.1
 click==8.1.8
 colorama==0.4.6
-comtypes==1.4.10
 eval_type_backport==0.2.2
 filelock==3.18.0
 fsspec==2025.3.2
@@ -59,11 +58,8 @@ pydantic==2.10.6
 pydantic_core==2.27.2
 pydeck==0.9.1
 pyparsing==3.2.3
-pypiwin32==223
 python-dateutil==2.9.0.post0
-pyttsx3==2.98
 pytz==2025.2
-pywin32==310
 PyYAML==6.0.2
 referencing==0.36.2
 requests==2.32.3
