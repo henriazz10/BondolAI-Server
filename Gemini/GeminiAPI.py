@@ -1,7 +1,7 @@
 # Coding in utf-8
 # Develop by Bondol Team
 
-# Copyright 2025 Henri
+# Copyright 2025 Henri.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import streamlit as st
 import time
 
 # We import the Google's GenAI library
-import google.generativeai as genai
+import google.genai as genai
 from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
 from google.genai import types
 import google.genai.errors
@@ -39,9 +39,7 @@ def get_bondol_prompt():
     return bondol_prompt # Return the prompt
 
 # We initialize Google's GenAI client with your api key
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"]) # Make sure that is your valid API key!!!
-
-# model = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
+model = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])  # Make sure that is your valid API key!!!
 
 # This is the Google's search tool, we will use it to search in Google's engine
 google_search_tool = Tool(google_search = GoogleSearch(),
@@ -58,7 +56,6 @@ thinking_models = ['gemini-2.5-pro',
 
 # This function, with an user question, bondol prompt, the model, and the historial; returns a response from the AI
 def gemini_answer(question, server_model, historial):
-    model = genai.GenerativeModel(server_model) # We define the model to use
     thoughts = ''
     answer_not_thoughts = ''
     complete_answer=''
@@ -84,18 +81,20 @@ def gemini_answer(question, server_model, historial):
                         response_modalities=["TEXT"], # Define the response modality, in this case, text
                 )
     elif server_model in thinking_models: # If the model is not compatible with Google's search
-        config = genai.GenerationConfig(
+        config = GenerateContentConfig(
+                response_modalities=["TEXT"], # Define the response modality, in this case, text
                 thinking_config=types.ThinkingConfig(
                     thinking_budget=-1,
                     include_thoughts=True
+
                     )
                 )
 
     try:
-        for chunk in model.generate_content(
-            stream = True, # Define the model to use
+        for chunk in model.models.generate_content_stream(
+            model=server_model, # Define the model to use
             contents= str(final_question), # Define the final question
-            generation_config=config # Define the response modality, in this case, text
+            config=config # Define the response modality, in this case, text
             ):
 
             for block in chunk.candidates[0].content.parts:
