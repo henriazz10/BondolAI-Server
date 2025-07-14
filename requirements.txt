@@ -43,7 +43,6 @@ MarkupSafe==3.0.2
 mistralai==1.7.1
 narwhals==1.30.0
 numpy==2.2.3
-ollama==0.4.7
 orjson==3.10.15
 packaging==24.2
 pandas==2.2.3
