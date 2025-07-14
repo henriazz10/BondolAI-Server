@@ -110,15 +110,6 @@ def config_page():
             print("Alguien desea registrarse, comenzando operación")
             st.session_state.dialog_etape = 'register'
 
-        # THIS BUTTON IS FOR TESTING PURPOSES ONLY, it deletes ALL USERS TABLE
-        if st.sidebar.button('borrar tabla', key='delete_table_button'):
-            conn = sql.connect('history.db')
-            cursor = conn.cursor()
-            cursor.execute("DELETE FROM users")
-            conn.commit()
-            conn.close()
-            st.success("Tabla de usuarios borrada exitosamente.")
-
         # We use a system that, with each st.rerun(), we can close and open new dialogs, of distinct types.
         # If the dialog_etape is 'login', we show the login dialog
         if st.session_state.dialog_etape == 'login':
