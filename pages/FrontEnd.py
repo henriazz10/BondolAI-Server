@@ -19,7 +19,7 @@
 # We import the necessary general libraries
 import streamlit as st
 import sqlite3 as sql
-
+from PIL import Image
 # We import functions of others Bondol's files
 from functions import response, save_history
 from Gemini.GeminiAPI import get_bondol_prompt
@@ -29,7 +29,9 @@ from Gemini.GeminiAPI import get_bondol_prompt
 historial = []
 
 # We set the page configuration
-st.title("Bondol")
+bondol_text = Image.open("Assets/Bondol.png") # We open the Bondol's image
+st.image(bondol_text, width=250) # We display the image in the app
+
 
 # We create the selectbox, so th user can choose the model
 crude_model = st.selectbox(
@@ -67,6 +69,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 
+
 # If the user send a prompt....
 if prompt := st.chat_input("Pregunta a Bondol:"):
     with st.chat_message("user"): # With the role of user, we display the prompt
@@ -76,21 +79,25 @@ if prompt := st.chat_input("Pregunta a Bondol:"):
 
     with st.chat_message("assistant"): # And with role of assistant, we respond the prompt
         response_without_thought = '' # We define a variable to store the response without thoughts
-        status = None
-        message = st.empty()
-        for i in response(prompt, crude_model, st.session_state.historial):
-            response_with_thoughts = "".join(i)
+        status = None # We set an empty status, to show the thinking status of the AI
+        message = st.empty() # We create an empty message, to update it with the response
+        for i in response(prompt, crude_model, st.session_state.historial): # For each response from the AI, we do the following:
+            response_with_thoughts = "".join(i) # We concatenate the response with thoughts
 
-            if '<think>' in response_with_thoughts.split(' '):
+            # If the response contains '<think>' and '</think>', we check if already exists a status, if not, we create one
+            if '<think>' in response_with_thoughts.split(' ') and '</think>' not in response_with_thoughts.split(' '):
                 if not status:
                     status = st.status('Pensando...')
                     continue
 
+
+            # If the response contains '</think>', we update the status to 'complete' and set it to None, so we can continue with the next response
             elif '</think>' in response_with_thoughts.split(' '):
                 status.update(label='Pensando...', state='complete')
                 status = None
                 continue
 
+            # If a Status exist, we print the thoughts in it
             if status:
                 status.markdown(i) # We update the status with the response, without a new line
                 continue
@@ -103,4 +110,4 @@ if prompt := st.chat_input("Pregunta a Bondol:"):
 
     if st.session_state.get('logged_in', False): # If the user is logged in, we save the conversation
         if st.session_state.username: # If is a valid user...
-            save_history(st.session_state.actual_id, prompt, st.session_state.historial, crude_model, st.session_state.username)
+            save_history(st.session_state.actual_id, prompt, st.session_state.messages, crude_model, st.session_state.username)

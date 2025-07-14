@@ -104,6 +104,10 @@ def response(prompt, model, historial):
     historial.append({"role": "assistant", "content": answer_not_thoughts}) # Finally, we add the complete answer to the history
     return answer_not_thoughts # And returns it
 
+# This function is used to indicate that the function is still in development
+@st.dialog("Trabando en esto!")
+def working_in(): # Def the function
+    st.error("Seguimos trabajando en esta función para brindarte un mejor servicio")  # We show the working message
 try:
     smtp_server = "smtp.gmail.com" # This is the SMTP server for Gmail
     smtp_port = 587 # This is the SMTP port for Gmail
@@ -122,6 +126,7 @@ try:
     # This dialog is used to verificate the user, it consist in sending a confirmation code to the user's email
     @st.dialog('Confirma tu cuenta')
     def A2F_dialog(recipient_email):
+        st.session_state.a2f_successful = False  # We set the A2F successful to False, to avoid errors
         print(f"Se recibio un pedido de A2F al email: {recipient_email}")
         # If the A2F code isnt set, we create a random one, and save it
         if 'a2fcode' not in st.session_state:
@@ -166,7 +171,9 @@ try:
                     st.success("Código ingresado correctamente! Continuando con la operación solicitada...")
                     print("El codigo ingresado es igual al enviado, continuando con la operación")
                     time.sleep(1.2)
-                    return True # If the codes match, we return True
+                    st.session_state.a2f_successful = True # If the codes match, we set a session state variable to True, to indicate that the A2F was successful
+                    st.session_state.dialog_etape = 'A2F_sent' # We set the dialog etape to 'A2F_sent', to avoid errors in the next dialog
+                    st.rerun()
 
                 # if the codes dont match, we dont continue, and wait for the user to try again
                 elif int_input_code != st.session_state.a2fcode:
@@ -339,12 +346,16 @@ try:
             # If the user doesnt exist, we communicate it
             if user_count == 0:
                 st.error("El usuario inexistente, por favor, compruebe la información, e intente nuevamente.")
+                time.sleep(1.5) # We wait a moment
                 return
 
             # If there is only 1 user with that username, we return True to continue with the next step
             elif user_count == 1:
                 st.session_state.cp_email = user_data[2] # We save the email of the user
-                return True # Return True to continue
+                st.session_state.dialog_etape = 'change_password_A2F' # We change the state to 'change_password_A2F' to continue with the next step
+                st.success("Usuario encontrado, por favor espera a que se envíe un correo de confirmación.") # We show a success message
+                time.sleep(2)
+                st.rerun() # We rerun to close the dialog and open the A2F dialog
 
             elif user_count > 1: # If there are 2 or more users with the same name, we communicate it
                 st.error("Hay más de un usuario con el mismo nombre, por favor, contacta al soporte para resolver este problema.")
@@ -352,9 +363,38 @@ try:
 
     @st.dialog('Cambiar contraseña')
     def change_password_2nd_dialog():
-        st.success("Por favor, ingresa tu nueva contraseña.")
-        print("EXITO")
-        return True
+        new_password = st.text_input("Por favor, ingresa tu nueva contraseña.", type='password') # We ask the user for his new password
+        confirm_password = st.text_input("Por favor, confirma tu nueva contraseña.", type='password') # We ask the user to confirm his new password
+
+        # If the user clicks the button, we check if the passwords match
+        if st.button("Cambiar contraseña"):
+            # First, we check if the passwords match
+            if new_password == confirm_password:
+
+                # We connect to the database to change the password
+                with sql.connect('history.db') as conn:
+                    cursor = conn.cursor() # Define the Cursor
+                    # We check if the user exists in the database:
+                    cursor.execute("SELECT COUNT(*) FROM users WHERE user_name = ?", (st.session_state.cp_username,))
+                    user_data = cursor.fetchone() # We select the user data
+
+                    if user_data:
+                        new_salt = os.urandom(16)  # We generate a random salt for the hashing
+                        # We hash the password with the salt using SHA-256:
+                        new_hashed_password = hashlib.sha256(
+                            new_salt + st.session_state.rpassword.encode('utf-8')).hexdigest()
+                        # Finally, we update the user's password in the database:
+                        cursor.execute("UPDATE users SET hashed_password = ?, salt = ? WHERE user_name = ?",
+                                       (new_hashed_password, new_salt, st.session_state.cp_username))
+
+                        conn.commit() # We save the changes to the database
+                        st.success("Contraseña cambiada exitosamente!") # We comunicate thats the password was changed successfully
+                        time.sleep(1.5)
+                        st.session_state.dialog_etape = ''
+                        st.rerun()
+            else:
+                st.error("Las contraseñas ingresadas no coinciden. Intenta nuevamente")# If the passwords dont match, we comunicate it
+
 except Exception as e:
     st.error(f"Ocurrió un error inesperado: {e}. Por favor, inténtalo de nuevo más tarde.")
     st.stop()

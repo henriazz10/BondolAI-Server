@@ -1,7 +1,7 @@
 # Coding in utf-8
 # Develop by Bondol Team
 
-# Copyright 2025 Henri
+# Copyright 2025 Henri.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 
 # We import the necessary libraries
 import time
@@ -36,13 +37,13 @@ except ImportError as e:
 
     # Dummy response function
     def response_from_frontend(prompt, model, historial_list):
-        yield "Error: Response function not loaded. "
+        yield "Error de código, reportar a soporte bajo el identificador: NON-RESPONSE-LOAD."
         historial_list.append({"role": "user", "content": prompt})
         historial_list.append({"role": "assistant", "content": "Response not generated."})
 
     # Dummy save history function
     def save_history(chat_id, name, historial_to_save, model_used, user_name):
-        st.error("Error: Save function not loaded.")
+        st.error("Error de código, reportar a soporte bajo el identificador: NON-SAVE-LOAD.")
         pass
     st.stop()
 
@@ -50,7 +51,7 @@ except ImportError as e:
 DB_NAME = 'history.db'
 
 # We set the page title
-st.title("Conversation History")
+st.title("Historial de conversaciones")
 
 
 # This function establishes and returns a connection to the database
@@ -72,7 +73,7 @@ if user_name := controller.get('bondolusername') or st.session_state.get('userna
 
     # If there are no conversations, we show a warning
     if not complete_historial:
-        st.warning("There are no conversations in the history.")
+        st.warning("No tienes conversaciones guardadas en este usuario!.")
     else:
         # We create a list of options for the conversation selector
         conversations_options = []
@@ -83,7 +84,7 @@ if user_name := controller.get('bondolusername') or st.session_state.get('userna
 
         # We create the selectbox for the user to choose a conversation
         selected_option = st.selectbox(
-            "Select a conversation to view or continue:",
+            "Selecciona una conversación para continuar:",
             options=conversations_options,
             format_func=lambda option: option[0],
             key="conversation_selector_history_viewer"  # Use a unique key for the widget
@@ -115,7 +116,7 @@ if user_name := controller.get('bondolusername') or st.session_state.get('userna
                 current_chat_timestamp = selected_chat_data_tuple[4]
 
                 # We create a button to delete the current conversation
-                if st.button("Delete conversation", key=f"delete_chat_{current_chat_db_id}"):
+                if st.button("Eliminar conversación", key=f"delete_chat_{current_chat_db_id}"):
                     try:
                         # We connect and execute the deletion in the database
                         conn_delete = get_db_connection()
@@ -123,16 +124,16 @@ if user_name := controller.get('bondolusername') or st.session_state.get('userna
                         cursor_delete.execute("DELETE FROM history WHERE id = ?", (current_chat_db_id,))
                         conn_delete.commit()
                         conn_delete.close()
-                        st.toast(f"Conversation '{current_chat_name}' deleted.")
+                        st.toast(f"Conversación '{current_chat_name}' eliminada.")
                         time.sleep(1)
                         st.rerun()
                     except Exception as e:
-                        st.error(f"Error deleting conversation: {e}")
+                        st.error(f"Error eliminando la conversación: {e}")
 
                 # We show a subheader and a caption with the conversation details
-                st.subheader(f"Continuing: {current_chat_name}")
+                st.subheader(f"Continuando: {current_chat_name}")
                 st.caption(
-                    f"ID: {current_chat_db_id} | Model: {current_chat_model} | Last update: {datetime.datetime.strptime(current_chat_timestamp, '%Y-%m-%d %H:%M:%S').strftime('%Y-%m-%d %H:%M:%S')}")
+                    f"ID: {current_chat_db_id} | Modelo: {current_chat_model} | Ultimo cambio: {datetime.datetime.strptime(current_chat_timestamp, '%Y-%m-%d %H:%M:%S').strftime('%Y-%m-%d %H:%M:%S')}")
 
                 # We define unique keys for the session state to prevent conversations from mixing up
                 session_key_historial = f"historial_chat_viewer_{current_chat_db_id}"
@@ -152,12 +153,12 @@ if user_name := controller.get('bondolusername') or st.session_state.get('userna
                                 st.session_state[session_key_historial])
                         except js.JSONDecodeError:
                             # If the JSON is invalid, show an error and start with an empty history
-                            st.error("Error decoding history (invalid JSON). Starting with an empty chat. Please report this error with the code 'HISTORY-JSON-ERROR'.")
+                            st.error("Error de codificación (invalid JSON). Empezando conversación vacía; reporta este error con el identificador: 'HISTORY-JSON-ERROR'.")
                             st.session_state[session_key_historial] = []
                             st.session_state[session_key_messages_display] = []
                         except Exception as e:
                             # We capture any other errors during loading
-                            st.error(f"An error occurred while loading the conversation: {e}. Starting with an empty chat.")
+                            st.error(f"Error cargando la conversación desde el historial: {e}. Comenzando uno vacio.")
                             st.session_state[session_key_historial] = []
                             st.session_state[session_key_messages_display] = []
                     else:
@@ -167,14 +168,21 @@ if user_name := controller.get('bondolusername') or st.session_state.get('userna
                     # We save the current chat ID in the session to know which one is active
                     st.session_state[f"loaded_chat_id_viewer"] = current_chat_db_id
 
+                status = None  # Initialize the status variable to None for real-time response updates
                 # We display the existing messages from the loaded conversation
                 for message in st.session_state.get(session_key_messages_display, []):
-                    with st.chat_message(message["role"]):
-                        st.markdown(message["content"])
+                    time.sleep(0.05)  # Small delay to simulate real-time response
 
+                    with st.chat_message(message["role"]) as msg_role:
+                        time.sleep(0.05)  # Small delay to simulate real-time response
+                        msg = st.empty()  # Create an empty message container to update later
+                        if msg_role == "assistant":
+                                msg.markdown(i)  # We write the response in the chat, without a new line
+                        else:
+                            msg.markdown(message["content"])
 
                 # If the user sends a new message...
-                if prompt := st.chat_input(f"Write to '{current_chat_name}'..."):
+                if prompt := st.chat_input(f"Escribiendo a: '{current_chat_name}'..."):
                     # We add the user's message to the list of messages to display
                     st.session_state[session_key_messages_display].append({"role": "user", "content": prompt})
                     with st.chat_message("user"):
@@ -199,16 +207,16 @@ if user_name := controller.get('bondolusername') or st.session_state.get('userna
                         # We save the updated conversation to the database. The save_history function handles the JSON conversion.
                         # The 'historial_activo_para_respuesta' is the list of dicts that needs to be saved.
                         if not save_history(current_chat_db_id, current_chat_name, historial_activo_para_respuesta, current_chat_model, user_name):
-                            st.error("Error saving the history to the database. Please try again.")
+                            st.error("Error guardando el historial. Por favor, intenta de nuevo.")
 
                     except Exception as e:
-                        st.error(f"Error saving conversation: {e}")
+                        st.error(f"Error guardando la conversación: {e}")
 
                     # We rerun the app to update the timestamp in the selectbox
                     st.rerun()
             else:
                 # If the conversation data couldn't be loaded, we show an error
-                st.error("Could not load the data for the selected conversation.")
+                st.error("No se pudo cargar la conversación seleccionada. Por favor, intenta de nuevo más tarde.")
 else:
     # If no user is authenticated, we show an error message
-    st.error("No authenticated user. Please log in to see your conversation history.")
+    st.error("No estás autenticado. Por favor, inicia sesión para ver tu historial de conversaciones.")

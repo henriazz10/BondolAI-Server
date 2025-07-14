@@ -2,7 +2,7 @@ import time
 import streamlit as st
 import sqlite3 as sql
 from streamlit_cookies_controller import CookieController
-from functions import change_password_dialog
+from functions import working_in
 
 
 controller = CookieController()
@@ -26,6 +26,8 @@ if st.session_state.get('logged_in', False):
             st.rerun()
 
 
-        st.button("Eliminar cuenta")
-        st.button("Guardar cambios")
+        if st.button("Eliminar cuenta"):
+            working_in()
 
+        if st.button("Guardar cambios"):
+            working_in()
