@@ -36,8 +36,8 @@ st.image(bondol_text, width=250) # We display the image in the app
 # We create the selectbox, so th user can choose the model
 crude_model = st.selectbox(
     '¿Qué modelo quieres usar? Se puede cambiar durante la conversación',
-    ('gemini-2.5-pro',
-     'gemini-2.5-flash', 'gemini-2.5-flash-preview-04-17', 'gemini-2.5-flash-preview-05-20', 'gemini-2.5-flash-lite-preview-06-17',
+    ('gemini-2.5-flash', 'gemini-2.5-flash-preview-04-17', 'gemini-2.5-flash-preview-05-20', 'gemini-2.5-flash-lite-preview-06-17',
+'gemini-2.5-pro',
      'gemini-2.0-flash', 'gemini-2.0-flash-lite', 'gemini-2.0-flash-thinking-exp-01-21',
      'gemini-1.5-flash', 'gemini-1.5-flash-8b',
      'gemma-3-1b-it', 'gemma-3-4b-it', 'gemma-3-12b-it', 'gemma-3-27b-it',
